@@ -11,11 +11,11 @@ router = APIRouter(
     prefix="/api/user",
 )
 
-# 작성한 get_question_list 함수를 사용할 수 있도록 질문 목록 라우터 함수를 수정
-@router.get("/list")
-def user_list(db: Session = Depends(get_db)):
-    _user_list = actual_query.get_user_list(db)
-    return _user_list
+# # 작성한 get_question_list 함수를 사용할 수 있도록 질문 목록 라우터 함수를 수정
+# @router.get("/list")
+# def user_list(db: Session = Depends(get_db)):
+#     _user_list = actual_query.get_user_list(db)
+#     return _user_list
 
 
 # # Fastapi의 Depends를 사용, 더 간단하게 표현가능
@@ -41,25 +41,25 @@ def user_list(db: Session = Depends(get_db)):
 #     db.close() # 세션을 커넥션 풀에 반환
 #     return _user_list
 
-@router.get("/num1")
-def user_id42(db: Session = Depends(get_db)):
-    _user_id42 = actual_query.get_user_id42(db)
-    return _user_id42
+# @router.get("/num1")
+# def user_id42(db: Session = Depends(get_db)):
+#     _user_id42 = actual_query.get_user_id42(db)
+#     return _user_id42
 
-@router.get("/num2")
-def user_all(db: Session = Depends(get_db)):
-    _user_all = actual_query.get_user_all(db)
-    return _user_all
+# @router.get("/num2")
+# def user_all(db: Session = Depends(get_db)):
+#     _user_all = actual_query.get_user_all(db)
+#     return _user_all
 
-@router.get("/num3")
-def oneuser_name(db: Session = Depends(get_db)):
-    _oneuser_name = actual_query.get_oneuser_name(db)
-    return _oneuser_name
+# @router.get("/num3")
+# def oneuser_name(db: Session = Depends(get_db)):
+#     _oneuser_name = actual_query.get_oneuser_name(db)
+#     return _oneuser_name
 
-@router.get("/num4")
-def firstuser_name(db: Session = Depends(get_db)):
-    _firstuser_name = actual_query.get_oneuser_name(db)
-    return _firstuser_name
+# @router.get("/num4")
+# def firstuser_name(db: Session = Depends(get_db)):
+#     _firstuser_name = actual_query.get_oneuser_name(db)
+#     return _firstuser_name
 
 @router.get("/num5")
 def user_address(db: Session = Depends(get_db)):
@@ -80,6 +80,13 @@ def user_selectfrom(db: Session = Depends(get_db)):
 def user_address_join(db: Session = Depends(get_db)):
     _user_address_join = actual_query.get_user_address_join(db)
     return _user_address_join
+
+@router.get("/num8_1")
+def user_address_join(db: Session = Depends(get_db)):
+    _user_address_join_2 = actual_query.get_user_address_join_2(db)
+    return _user_address_join_2
+
+
 
 @router.put("/num9")
 def foo2foobar(db: Session = Depends(get_db)):

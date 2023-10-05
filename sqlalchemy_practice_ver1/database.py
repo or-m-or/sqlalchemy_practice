@@ -2,12 +2,32 @@ import contextlib
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import logging
+
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./myapi.db"
 
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}, echo=True
 )
+
+# 로그 설정을 초기화, 기본 로그 레벨 및 출력 포맷을 설정하는 데 사용
+logging.basicConfig()
+logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+
+# 로거(logger)를 생성하고 로깅 레벨을 설정
+logger = logging.getLogger('demo')
+logger.setLevel(logging.INFO)
+
+# sqlalchemy.engine 레벨 INFO : Query 로깅, DEBUG : Query+결과 로깅
+# sqlalchemy.dialects controls custom logging for SQL dialects.
+# sqlalchemy.pool 레벨을 INFO 이하로 해두면 connection pool의 checkouts/checkins 을 로깅한다.
+# sqlalchemy.orm 레벨을 INFO로 해두면 mapper confineration들을 로깅한다.
+
+
+
+
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
