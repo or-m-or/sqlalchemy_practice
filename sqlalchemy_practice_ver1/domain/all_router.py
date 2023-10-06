@@ -61,39 +61,44 @@ router = APIRouter(
 #     _firstuser_name = actual_query.get_oneuser_name(db)
 #     return _firstuser_name
 
-@router.get("/num5")
-def user_address(db: Session = Depends(get_db)):
-    _user_address = actual_query.get_user_address(db)
-    return _user_address
+# 6번
+@router.get("/join_test")
+def join_test(db: Session = Depends(get_db)):
+    _join_test = actual_query.get_join_test(db)
+    return _join_test
 
-@router.get("/num6")
-def address_sameemail(db: Session = Depends(get_db)):
-    _address_sameemail = actual_query.get_address_sameemail(db)
-    return _address_sameemail
+# 5번
+@router.get("/joinedload_test")
+def joinedload_test(db: Session = Depends(get_db)):
+    _joinedload_test = actual_query.get_joinedload_test(db)
+    return _joinedload_test
 
-@router.get("/num7")
-def user_selectfrom(db: Session = Depends(get_db)):
-    _user_selectfrom = actual_query.get_user_selectfrom(db)
-    return _user_selectfrom
+# 8-1번
+@router.get("/contains_eager_test")
+def contains_eager_test(db: Session = Depends(get_db)):
+    _contains_eager_test = actual_query.get_contains_eager_test(db)
+    return _contains_eager_test
 
-@router.get("/num8")
-def user_address_join(db: Session = Depends(get_db)):
-    _user_address_join = actual_query.get_user_address_join(db)
-    return _user_address_join
+# 8-2번
+@router.get("/populate_existing_test")
+def populate_existing_test(db: Session = Depends(get_db)):
+    _populate_existing_test = actual_query.get_populate_existing_test(db)
+    return _populate_existing_test
 
-@router.get("/num8_1")
-def user_address_join(db: Session = Depends(get_db)):
-    _user_address_join_2 = actual_query.get_user_address_join_2(db)
-    return _user_address_join_2
+# 9번
+@router.put("/synchronize_session_test")
+def synchronize_Session_test(db: Session = Depends(get_db)):
+    _synchronize_Session_test = actual_query.put_synchronize_Session_test(db)
+    return _synchronize_Session_test
 
+# 7번
+@router.get("/from_statement_test")
+def from_statement_test(db: Session = Depends(get_db)):
+    _from_statement_test = actual_query.get_from_statement_test(db)
+    return _from_statement_test
 
-
-@router.put("/num9")
-def foo2foobar(db: Session = Depends(get_db)):
-    _foo2foobar = actual_query.put_foo2foobar(db)
-    return _foo2foobar
-
-@router.get("/num10")
-def user_count(db: Session = Depends(get_db)):
-    _user_count = actual_query.get_user_count(db)
-    return _user_count
+# 10번
+@router.get("/count_test")
+def count_test(db: Session = Depends(get_db)):
+    _count_test = actual_query.get_count_test(db)
+    return _count_test

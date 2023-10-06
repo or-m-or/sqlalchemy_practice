@@ -23,68 +23,58 @@ from sqlalchemy import text
 #     return _firstuser_name
 
 
+# 6. join + filter
+def get_join_test(db: Session):
+    _get_join_test = db.query(User).\
+    join(Address).\
+    filter(Address.email.like('%@rbrain.co.kr')).\
+    all() # filter(Address.email.like('%@gmail.com')).\
+    return _get_join_test
 
 # 5. joinedload
-def get_user_address(db: Session):
-    _user_address = db.query(User).options(
-    joinedload(User.address) # innerjoin=True
-    ).all()
-    return _user_address
-
-
-# 6. join + filter
-def get_address_sameemail(db: Session):
-    _address_sameemail = db.query(User).\
-    join(Address).\
-    filter(Address.email == 'e@sa.us').\
-    all()
-    return _address_sameemail
-
-
-# 7. from_statement
-def get_user_selectfrom(db: Session):
-    _user_selectfrom = db.query(User).\
-    from_statement(
-    text("select * from user")
-    ).all()
-    return _user_selectfrom
-
-
-
-
-
+def get_joinedload_test(db: Session):
+    _get_joinedload_test = db.query(User).options(joinedload(User.address)).\
+    join(Address).filter(Address.email.like('%@rbrain.co.kr')).\
+    all() # filter(Address.email.like('%@rbrain.co.kr')).\
+    return _get_joinedload_test
 
 # 8. contains_eager + populate_existing
-def get_user_address_join(db: Session):
-    _user_address_join = db.query(User).\
+def get_contains_eager_test(db: Session):
+    _get_contains_eager_test = db.query(User).\
     join(User.address).\
     options(contains_eager(User.address)).\
     populate_existing().all()
-    return _user_address_join
+    return _get_contains_eager_test
 
 # 8.1 populate_existing_test
-def get_user_address_join_2(db: Session):
-    _user_info = db.query(User).\
+def get_populate_existing_test(db: Session):
+    _get_populate_existing_test = db.query(User).\
     join(User.address).\
     filter(Address.email.like("%@rbrain.co.kr")).\
     options(contains_eager(User.address)).\
     all() # populate_existing().
-    return _user_info
-
+    return _get_populate_existing_test
 
 # 9. update + synchronize_Session="evaluate"
-def put_foo2foobar(db: Session):
-    _foo2foobar = db.query(User).\
+def put_synchronize_Session_test(db: Session):
+    _put_synchronize_Session_test = db.query(User).\
     filter(User.name == 'foo').\
     update(
         {"fullname": "Foo Bar"},
         synchronize_session="evaluate"
     )
     # db.commit()
-    return _foo2foobar
+    return _put_synchronize_Session_test
 
+# 7. from_statement
+def get_from_statement_test(db: Session):
+    _get_from_statement_test = db.query(User).\
+    from_statement(
+    text("select * from user")
+    ).all()
+    return _get_from_statement_test
 
 # 10. count
-def get_user_count(db: Session):
-    _user_count = db.query(User).count()
-    return _user_count
+def get_count_test(db: Session):
+    _get_count_test = db.query(User).count()
+    return _get_count_test

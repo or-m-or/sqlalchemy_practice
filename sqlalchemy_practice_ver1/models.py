@@ -8,7 +8,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    fullname = Column(String)
+    age = Column(Integer)
     address = relationship('Address', back_populates='user') 
     # 부모 객체 값이 변할 때 자식 객체의 연관된 속성도 동기화
     # back_populates 는 부모,자식 테이블에 모두 지정해야 함

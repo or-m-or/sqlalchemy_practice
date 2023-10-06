@@ -5,15 +5,15 @@ from sqlalchemy.orm import sessionmaker
 import logging
 
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./myapi.db"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}, echo=True
 )
 
-# 로그 설정을 초기화, 기본 로그 레벨 및 출력 포맷을 설정하는 데 사용
-logging.basicConfig()
-logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+# # 로그 설정을 초기화, 기본 로그 레벨 및 출력 포맷을 설정하는 데 사용
+# logging.basicConfig()
+# logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
 
 # 로거(logger)를 생성하고 로깅 레벨을 설정
 logger = logging.getLogger('demo')
