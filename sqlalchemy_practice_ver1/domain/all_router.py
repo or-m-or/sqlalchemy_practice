@@ -83,6 +83,10 @@ def contains_eager_test(db: Session = Depends(get_db)):
 @router.get("/populate_existing_test")
 def populate_existing_test(db: Session = Depends(get_db)):
     _populate_existing_test = actual_query.get_populate_existing_test(db)
+    
+    # db 수정 쿼리 실행
+    actual_query.add_address(db)
+    
     return _populate_existing_test
 
 # 9번

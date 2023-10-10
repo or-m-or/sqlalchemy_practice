@@ -58,7 +58,7 @@ def oneuser_name(db: Session = Depends(get_db)):
 
 @router.get("/num4")
 def firstuser_name(db: Session = Depends(get_db)):
-    _firstuser_name = actual_query.get_oneuser_name(db)
+    _firstuser_name = actual_query.get_firstuser_name(db)
     return _firstuser_name
 
 @router.get("/num5")

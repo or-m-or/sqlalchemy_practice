@@ -8,9 +8,8 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    fullname = Column(String)
-    address = relationship('Address', back_populates='user')
-
+    age = Column(Integer)
+    address = relationship('Address', back_populates='user') 
 
 class Address(Base):
     __tablename__ = "address"
@@ -18,4 +17,4 @@ class Address(Base):
     id = Column(Integer, primary_key=True)
     email = Column(String, unique=True)
     user_id = Column(Integer, ForeignKey('user.id'))
-    user = relationship('User', back_populates='address')
+    user = relationship('User', back_populates='address') 
