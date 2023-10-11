@@ -43,7 +43,7 @@ router = APIRouter(
 
 @router.get("/num1")
 def user_id42(db: Session = Depends(get_db)):
-    _user_id42 = actual_query.get_user_id42(db)
+    _user_id42 = actual_query.get_test(db)
     return _user_id42
 
 @router.get("/num2")

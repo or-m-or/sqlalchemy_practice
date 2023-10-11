@@ -4,9 +4,13 @@ from sqlalchemy import text, create_engine, select, update, func
 
 
 # 1
-def get_user_id42(db: Session):
-    _user_id42 = db.get(User, 1)
-    return _user_id42
+def get_test(db: Session):
+    _get_test = db.get(User, 1)
+
+    # 1.4버전의 코드도 동작한다.
+    # _get_test = db.query(User).join(Address).all()
+
+    return _get_test
 
 
 # 2. 
